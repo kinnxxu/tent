@@ -61,7 +61,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('http://weekend-production-4177.up.railway.apption-4177.up.railway.app/api/request-quote', {
+      const response = await fetch('https://weekend-production-4177.up.railway.app/api/request-quote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

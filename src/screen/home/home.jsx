@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://weekend-production-4177.up.railway.app/api/products');
+        const response = await fetch('https://weekend-production-4177.up.railway.app/api/products');
         if (!response.ok) throw new Error('Failed to fetch products');
         const data = await response.json();
 

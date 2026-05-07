@@ -65,7 +65,7 @@ const ProductDetail = () => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://weekend-production-4177.up.railway.app/api/products/${id}`);
+        const response = await fetch(`https://weekend-production-4177.up.railway.app/api/products/${id}`);
         if (!response.ok) throw new Error('Product not found');
         const data = await response.json();
 
@@ -90,7 +90,7 @@ const ProductDetail = () => {
 
         setProduct(enrichedProduct);
 
-        const allRes = await fetch('http://weekend-production-4177.up.railway.app/api/products');
+        const allRes = await fetch('https://weekend-production-4177.up.railway.app/api/products');
         if (allRes.ok) {
           const allData = await allRes.json();
           const filtered = allData.filter(p => String(p.id) !== String(data.id) && String(p.slug) !== String(data.slug));

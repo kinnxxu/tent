@@ -6,7 +6,7 @@ import { ShoppingCart } from 'lucide-react';
 import { useToast } from '../../context/ToastContext';
 import './ProductCard.css';
 
-const BACKEND_URL = 'http://weekend-production-4177.up.railway.app';
+const BACKEND_URL = 'https://weekend-production-4177.up.railway.app';
 const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600';
 
 /**

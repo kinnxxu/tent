@@ -26,7 +26,7 @@ const UserManagement = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://weekend-production-4177.up.railway.app/api/admin/users', {
+      const response = await fetch('https://weekend-production-4177.up.railway.app/api/admin/users', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -47,7 +47,7 @@ const UserManagement = () => {
   const handleUpdateDiscount = async (userId, discount) => {
     setUpdatingId(userId);
     try {
-      const response = await fetch(`http://weekend-production-4177.up.railway.app/api/admin/users/${userId}/discount`, {
+      const response = await fetch(`https://weekend-production-4177.up.railway.app/api/admin/users/${userId}/discount`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const UserManagement = () => {
   const handleUpdateGst = async (userId, gst) => {
     setUpdatingId(userId);
     try {
-      const response = await fetch(`http://weekend-production-4177.up.railway.app/api/admin/users/${userId}/gst`, {
+      const response = await fetch(`https://weekend-production-4177.up.railway.app/api/admin/users/${userId}/gst`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -143,7 +143,7 @@ const Checkout = () => {
 
     setShippingData(prev => ({ ...prev, loading: true }));
     try {
-      const response = await fetch('http://weekend-production-4177.up.railway.apption-4177.up.railway.app/api/calculate-shipping', {
+      const response = await fetch('https://weekend-production-4177.up.railway.app/api/calculate-shipping', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items, pincode: zip, state, city })
@@ -202,7 +202,7 @@ const Checkout = () => {
     setIsLoading(true);
     try {
       // 1. Create order on backend (Backend calculates total from DB)
-      const response = await fetch('http://weekend-production-4177.up.railway.app/api/payment/create-order', {
+      const response = await fetch('https://weekend-production-4177.up.railway.app/api/payment/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -230,7 +230,7 @@ const Checkout = () => {
         handler: async function (response) {
           // 3. Verify payment on backend
           try {
-            const verifyRes = await fetch('http://weekend-production-4177.up.railway.app/api/payment/verify', {
+            const verifyRes = await fetch('https://weekend-production-4177.up.railway.app/api/payment/verify', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
