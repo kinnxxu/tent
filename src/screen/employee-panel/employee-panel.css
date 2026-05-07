@@ -1,0 +1,52 @@
+.employee-panel-screen {
+  padding: 120px 0 80px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.header-info h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.search-box {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 500px;
+}
+
+.search-box input {
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+}
+
+.orders-table-container {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  overflow-x: auto;
+}
+
+.orders-table { width: 100%; border-collapse: collapse; }
+.orders-table th { background-color: #f1f5f9; padding: 1rem; font-size: 0.85rem; font-weight: 700; color: #475569; }
+.orders-table td { padding: 1.25rem 1rem; border-bottom: 1px solid #f1f5f9; }
+
+.status-badge { padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; }
+.status-badge.processing { background: #fef3c7; color: #92400e; }
+.status-badge.dispatched { background: #dbeafe; color: #1e40af; }
+.status-badge.delivered { background: #dcfce7; color: #166534; }
+.status-badge.cancelled { background: #fee2e2; color: #991b1b; }
