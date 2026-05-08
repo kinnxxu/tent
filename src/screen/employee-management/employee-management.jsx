@@ -48,7 +48,7 @@ const EmployeeManagement = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/admin/employees', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/admin/employees', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -117,8 +117,8 @@ const EmployeeManagement = () => {
 
       // 2. Save to Backend (employees.json)
       const url = editingId
-        ? `https://weekend-production-4177.up.railway.app/api/admin/employees/${editingId}`
-        : 'https://weekend-production-4177.up.railway.app/api/admin/employees';
+        ? `${import.meta.env.VITE_API_URL}/api/admin/employees/${editingId}`
+        : '${import.meta.env.VITE_API_URL}/api/admin/employees';
 
       const method = editingId ? 'PUT' : 'POST';
 
@@ -154,7 +154,7 @@ const EmployeeManagement = () => {
     if (!window.confirm("Are you sure?")) return;
     try {
       // 1. Delete from Backend
-      const response = await fetch(`https://weekend-production-4177.up.railway.app/api/admin/employees/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/employees/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

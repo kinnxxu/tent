@@ -16,7 +16,7 @@ const Orders = () => {
         return;
       }
       try {
-        const response = await fetch(`https://weekend-production-4177.up.railway.app/api/orders/${user.email || user.username}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/${user.email || user.username}`);
         if (response.ok) {
           const data = await response.json();
           setOrders(data.sort((a, b) => new Date(b.date) - new Date(a.date)));

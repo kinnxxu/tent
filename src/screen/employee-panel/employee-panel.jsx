@@ -18,7 +18,7 @@ const EmployeePanel = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/admin/orders', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/admin/orders', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -36,7 +36,7 @@ const EmployeePanel = () => {
 
   const handleUpdateStatus = async (orderId) => {
     try {
-      const response = await fetch(`https://weekend-production-4177.up.railway.app/api/admin/orders/${orderId}/status`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

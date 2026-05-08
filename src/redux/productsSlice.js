@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Async thunk to fetch all products from backend
 export const fetchProducts = createAsyncThunk('products/fetchAll', async () => {
-  const response = await fetch('https://weekend-production-4177.up.railway.app/api/products');
+  const response = await fetch('${import.meta.env.VITE_API_URL}/api/products');
   if (!response.ok) throw new Error('Failed to fetch products');
   const data = await response.json();
   return data.map(p => ({

@@ -57,7 +57,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch('https://weekend-production-4177.up.railway.app/api/auth/send-otp', {
+      const res = await fetch('${import.meta.env.VITE_API_URL}/api/auth/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),
@@ -83,7 +83,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch('https://weekend-production-4177.up.railway.app/api/auth/verify-otp', {
+      const res = await fetch('${import.meta.env.VITE_API_URL}/api/auth/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, otp }),
@@ -115,7 +115,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch('https://weekend-production-4177.up.railway.app/api/auth/send-otp', {
+      const res = await fetch('${import.meta.env.VITE_API_URL}/api/auth/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),
@@ -141,7 +141,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch('https://weekend-production-4177.up.railway.app/api/auth/register-otp', {
+      const res = await fetch('${import.meta.env.VITE_API_URL}/api/auth/register-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, otp, name, company }),
@@ -180,7 +180,7 @@ const Auth = () => {
       // 1. Primary Auth Attempt: Backend (Handles Admin & Staff)
       try {
         console.log("Attempting backend login...");
-        const backendRes = await fetch('https://weekend-production-4177.up.railway.app/api/auth/login', {
+        const backendRes = await fetch('${import.meta.env.VITE_API_URL}/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: email.trim(), password }),

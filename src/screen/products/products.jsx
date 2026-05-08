@@ -56,7 +56,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/products');
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/products');
       if (!response.ok) throw new Error('Failed to fetch products');
       const data = await response.json();
 
@@ -81,7 +81,7 @@ const Products = () => {
 
     setUploading(true);
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/upload', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
         method: 'POST',
         body: formDataUpload,
       });
@@ -107,7 +107,7 @@ const Products = () => {
 
     setUploadingAdditional(true);
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/upload', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
         method: 'POST',
         body: formDataUpload,
       });
@@ -132,7 +132,7 @@ const Products = () => {
 
     setUploadingCatalogue(true);
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/upload-catalogue', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload-catalogue', {
         method: 'POST',
         body: formDataUpload,
       });
@@ -213,7 +213,7 @@ const Products = () => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await fetch('https://weekend-production-4177.up.railway.app/api/products', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +266,7 @@ const Products = () => {
 
   const handleUpdateProduct = async () => {
     try {
-      const response = await fetch(`https://weekend-production-4177.up.railway.app/api/products/${editingId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${editingId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -286,7 +286,7 @@ const Products = () => {
   const handleDeleteProduct = async (id) => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
     try {
-      const response = await fetch(`https://weekend-production-4177.up.railway.app/api/products/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
