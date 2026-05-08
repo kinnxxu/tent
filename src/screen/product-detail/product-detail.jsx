@@ -90,7 +90,7 @@ const ProductDetail = () => {
 
         setProduct(enrichedProduct);
 
-        const allRes = await fetch('${import.meta.env.VITE_API_URL}/api/products');
+        const allRes = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
         if (allRes.ok) {
           const allData = await allRes.json();
           const filtered = allData.filter(p => String(p.id) !== String(data.id) && String(p.slug) !== String(data.slug));

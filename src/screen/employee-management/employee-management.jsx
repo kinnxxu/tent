@@ -48,7 +48,7 @@ const EmployeeManagement = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/admin/employees', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/employees`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -118,7 +118,7 @@ const EmployeeManagement = () => {
       // 2. Save to Backend (employees.json)
       const url = editingId
         ? `${import.meta.env.VITE_API_URL}/api/admin/employees/${editingId}`
-        : '${import.meta.env.VITE_API_URL}/api/admin/employees';
+        : `${import.meta.env.VITE_API_URL}/api/admin/employees`;
 
       const method = editingId ? 'PUT' : 'POST';
 

@@ -56,7 +56,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/products');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
       if (!response.ok) throw new Error('Failed to fetch products');
       const data = await response.json();
 
@@ -81,7 +81,7 @@ const Products = () => {
 
     setUploading(true);
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
         method: 'POST',
         body: formDataUpload,
       });
@@ -107,7 +107,7 @@ const Products = () => {
 
     setUploadingAdditional(true);
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
         method: 'POST',
         body: formDataUpload,
       });
@@ -132,7 +132,7 @@ const Products = () => {
 
     setUploadingCatalogue(true);
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload-catalogue', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload-catalogue`, {
         method: 'POST',
         body: formDataUpload,
       });
@@ -213,7 +213,7 @@ const Products = () => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/products', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

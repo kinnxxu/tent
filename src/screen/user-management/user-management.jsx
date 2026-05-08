@@ -26,7 +26,7 @@ const UserManagement = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/admin/users', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {

@@ -18,7 +18,7 @@ const EmployeePanel = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/admin/orders', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/orders`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

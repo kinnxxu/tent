@@ -70,7 +70,7 @@ const Profile = () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -97,7 +97,7 @@ const Profile = () => {
 
     const token = getAuthToken();
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/user/update-profile', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/update-profile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
