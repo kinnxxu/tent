@@ -2,9 +2,11 @@
   "name": "b2b-ecommerce",
   "private": true,
   "version": "0.0.0",
+  "main": "index.html",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite preview",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
