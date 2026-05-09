@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { apiUrl } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { User, Building, Shield, LogOut, Save, ArrowLeft, Mail, FileText, Camera, Loader2 } from 'lucide-react';
 import { signOut } from 'firebase/auth';
@@ -70,7 +71,7 @@ const Profile = () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
+      const response = await fetch(apiUrl('/api/upload'), {
         method: 'POST',
         body: formData,
       });
@@ -97,7 +98,7 @@ const Profile = () => {
 
     const token = getAuthToken();
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/update-profile`, {
+      const response = await fetch(apiUrl('/api/user/update-profile'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +128,7 @@ const Profile = () => {
   const resolveImageUrl = (path) => {
     if (!path) return null;
     if (path.startsWith('http')) return path;
-    return `${import.meta.env.VITE_API_URL}${path}`;
+    return apiUrl(path);
   };
 
   if (!currentUser) return null;

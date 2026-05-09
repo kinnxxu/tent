@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../../utils/api';
 import HeroSection from '../../components/home/HeroSection';
 import AuthorizedBrandsSection from '../../components/home/AuthorizedBrandsSection';
 import BrandsSection from '../../components/home/BrandsSection';
@@ -17,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
+        const response = await fetch(apiUrl('/api/products'));
         if (!response.ok) throw new Error('Failed to fetch products');
         const data = await response.json();
 

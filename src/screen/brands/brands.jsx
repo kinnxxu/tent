@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { apiUrl } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { Search, Package, ChevronRight, SlidersHorizontal, Grid, Tag, AlertCircle } from 'lucide-react';
 import { resolveImageUrl } from '../../components/home/ProductCard';
@@ -17,7 +18,7 @@ const Brands = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
+        const response = await fetch(apiUrl('/api/products'));
         if (!response.ok) throw new Error('Failed to fetch brand data');
         const data = await response.json();
         setProducts(data);

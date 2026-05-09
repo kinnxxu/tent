@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { addItem } from '../../redux/cartSlice';
 import { ShoppingCart } from 'lucide-react';
 import { useToast } from '../../context/ToastContext';
+import { apiUrl } from '../../utils/api';
 import './ProductCard.css';
 
-const BACKEND_URL = `${import.meta.env.VITE_API_URL}`;
+const BACKEND_URL = import.meta.env.VITE_API_URL || '';
 const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600';
 
 /**
@@ -16,7 +17,7 @@ const resolveImageUrl = (imagePath) => {
   if (!imagePath || imagePath.trim() === '') return FALLBACK_IMAGE;
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
   const cleanPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-  return `${BACKEND_URL}${cleanPath}`;
+  return apiUrl(cleanPath);
 };
 
 const ProductCard = ({ product, isAdmin, onEdit, onDelete }) => {

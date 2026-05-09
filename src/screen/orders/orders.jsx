@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../../utils/api';
 import { Package, ChevronRight, ShoppingBag, Clock, CheckCircle2, Truck, Box, XCircle, MapPin, X, Phone, Mail, Building, CreditCard, ReceiptText } from 'lucide-react';
 import { resolveImageUrl } from '../../components/home/ProductCard';
 import './orders.css';
@@ -16,7 +17,7 @@ const Orders = () => {
         return;
       }
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/${user.email || user.username}`);
+        const response = await fetch(apiUrl(`/api/orders/${user.email || user.username}`));
         if (response.ok) {
           const data = await response.json();
           setOrders(data.sort((a, b) => new Date(b.date) - new Date(a.date)));

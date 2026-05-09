@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../../utils/api';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/cartSlice';
@@ -65,7 +66,7 @@ const ProductDetail = () => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
+        const response = await fetch(apiUrl(`/api/products/${id}`));
         if (!response.ok) throw new Error('Product not found');
         const data = await response.json();
 
@@ -90,7 +91,7 @@ const ProductDetail = () => {
 
         setProduct(enrichedProduct);
 
-        const allRes = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
+        const allRes = await fetch(apiUrl('/api/products'));
         if (allRes.ok) {
           const allData = await allRes.json();
           const filtered = allData.filter(p => String(p.id) !== String(data.id) && String(p.slug) !== String(data.slug));

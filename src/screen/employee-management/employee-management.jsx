@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../../utils/api';
 import { Users, UserPlus, Trash2, Edit2, Mail, Shield, User, Phone } from 'lucide-react';
 import { initializeApp, deleteApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -48,7 +49,7 @@ const EmployeeManagement = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/employees`, {
+      const response = await fetch(apiUrl('/api/admin/employees'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -117,8 +118,8 @@ const EmployeeManagement = () => {
 
       // 2. Save to Backend (employees.json)
       const url = editingId
-        ? `${import.meta.env.VITE_API_URL}/api/admin/employees/${editingId}`
-        : `${import.meta.env.VITE_API_URL}/api/admin/employees`;
+        ? apiUrl(`/api/admin/employees/${editingId}`)
+        : apiUrl('/api/admin/employees');
 
       const method = editingId ? 'PUT' : 'POST';
 
@@ -154,7 +155,7 @@ const EmployeeManagement = () => {
     if (!window.confirm("Are you sure?")) return;
     try {
       // 1. Delete from Backend
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/employees/${id}`, {
+      const response = await fetch(apiUrl(`/api/admin/employees/${id}`), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

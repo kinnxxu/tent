@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../../utils/api';
 import { Users, Search, Percent, Save, User as UserIcon, Building2, Phone, Calendar, CheckCircle2 } from 'lucide-react';
 import { getAuthToken, isAdmin } from '../../utils/auth';
 import './user-management.css';
@@ -26,7 +27,7 @@ const UserManagement = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
+      const response = await fetch(apiUrl('/api/admin/users'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -47,7 +48,7 @@ const UserManagement = () => {
   const handleUpdateDiscount = async (userId, discount) => {
     setUpdatingId(userId);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}/discount`, {
+      const response = await fetch(apiUrl(`/api/admin/users/${userId}/discount`), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ const UserManagement = () => {
   const handleUpdateGst = async (userId, gst) => {
     setUpdatingId(userId);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}/gst`, {
+      const response = await fetch(apiUrl(`/api/admin/users/${userId}/gst`), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { apiUrl } from '../../utils/api';
+import { getAuthToken } from '../../utils/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart } from '../../redux/cartSlice';
@@ -143,7 +145,7 @@ const Checkout = () => {
 
     setShippingData(prev => ({ ...prev, loading: true }));
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/calculate-shipping`, {
+      const response = await fetch(apiUrl('/api/calculate-shipping'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items, pincode: zip, state, city })
@@ -202,9 +204,10 @@ const Checkout = () => {
     setIsLoading(true);
     try {
       // 1. Create order on backend (Backend calculates total from DB)
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/create-order`, {
+      const token = getAuthToken();
+      const response = await fetch(apiUrl('/api/payment/create-order'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(token && { 'Authorization': `Bearer ${token}` }) },
         body: JSON.stringify({
           items: items.map(i => ({ id: i.id, quantity: i.quantity })), // Only send ID and quantity
           userId: userData?.id || userData?.phone,
@@ -230,9 +233,9 @@ const Checkout = () => {
         handler: async function (response) {
           // 3. Verify payment on backend
           try {
-            const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/verify`, {
+            const verifyRes = await fetch(apiUrl('/api/payment/verify'), {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { 'Content-Type': 'application/json', ...(token && { 'Authorization': `Bearer ${token}` }) },
               body: JSON.stringify({
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,

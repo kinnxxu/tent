@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Clock, Award, Eye, EyeOff, MessageCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import {
@@ -57,7 +58,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/send-otp`, {
+      const res = await fetch(apiUrl('/api/auth/send-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),
@@ -83,7 +84,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-otp`, {
+      const res = await fetch(apiUrl('/api/auth/verify-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, otp }),
@@ -115,7 +116,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/send-otp`, {
+      const res = await fetch(apiUrl('/api/auth/send-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),
@@ -141,7 +142,7 @@ const Auth = () => {
     setIsLoading(true);
     setErrorMsg('');
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register-otp`, {
+      const res = await fetch(apiUrl('/api/auth/register-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, otp, name, company }),
@@ -180,7 +181,7 @@ const Auth = () => {
       // 1. Primary Auth Attempt: Backend (Handles Admin & Staff)
       try {
         console.log("Attempting backend login...");
-        const backendRes = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
+        const backendRes = await fetch(apiUrl('/api/auth/login'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: email.trim(), password }),

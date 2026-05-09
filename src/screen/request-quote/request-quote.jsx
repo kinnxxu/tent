@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { apiUrl } from '../../utils/api';
 import { Send, FileText, Package, CheckCircle, Loader2 } from 'lucide-react';
 import './request-quote.css';
 
@@ -26,7 +27,7 @@ const RequestQuote = () => {
     setError('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/request-quote`, {
+      const response = await fetch(apiUrl('/api/request-quote'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

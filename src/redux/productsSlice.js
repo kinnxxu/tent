@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { apiUrl } from '../utils/api';
 
 // Async thunk to fetch all products from backend and normalize data for the UI
 export const fetchProducts = createAsyncThunk('products/fetchAll', async () => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
+  const response = await fetch(apiUrl('/api/products'));
   if (!response.ok) throw new Error('Failed to fetch products');
   const data = await response.json();
   return data.map(p => ({
